@@ -1,0 +1,17 @@
+FROM discoenv/jupyter-lab:beta
+
+USER jovyan
+
+RUN wget https://data.qiime2.org/distro/core/qiime2-2018.11-py35-linux-conda.yml
+
+# install foundational jupyter lab
+RUN conda env create -n qiime2-2018.11 --file qiime2-2018.11-py35-linux-conda.yml \
+    && rm qiime2-2018.11-py35-linux-conda.yml
+
+WORKDIR /home/jovyan
+
+ENV PATH /opt/conda/envs/qiime2-2018.11/bin/:$PATH
+
+ENTRYPOINT ["jupyter"]
+
+CMD ["lab", "--no-browser"] 
