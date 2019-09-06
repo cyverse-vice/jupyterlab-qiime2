@@ -1,26 +1,8 @@
-FROM qiime2/core:2019.7
-#USER root
-SHELL ["/bin/bash", "-c"]
-#RUN source activate qiime2-2019.7
-
-COPY jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
-
-USER root
-
-RUN apt-get update \
-    && apt-get install -y libpq-dev lsb wget gnupg apt-transport-https python3 python-requests curl \
-    && apt-get clean \
-    && rm -rf /usr/lib/apt/lists/* 
-
-RUN pip install jupyterlab==1.0.5 
-
-#ENTRYPOINT ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--no-browser"]
-ENTRYPOINT ["jupyter"]
-CMD ["lab", "--no-browser"]
-
-#FROM cyversevice/jupyterlab-base:1.0.5
-#USER jovyan
-#WORKDIR /home/jovyan
-#ENV PATH /opt/conda/envs/qiime2-2019.7/bin/:$PATH
-#ENTRYPOINT ["jupyter"]
-#CMD ["lab", "--no-browser"] 
+FROM cyversevice/jupyterlab-base:1.0.5
+USER jovyan
+RUN wget https://data.qiime2.org/distro/core/qiime2-2019.7-py36-linux-conda.yml
+RUN conda env create -n qiime2-2019.7 --file qiime2-2019.7-py36-linux-conda.yml
+RUN ["/bin/bash", "-c", "source activate qiime2-2019.7 && exec conda install ipykernel"]
+RUN ["/bin/bash", "-c", "source activate qiime2-2019.7 && exec ipython kernel install --user --name=qiime2-2019.7"]
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD ["jupyter lab --allow-root --ip=0.0.0.0 --no-browser"]
