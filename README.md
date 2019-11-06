@@ -2,8 +2,6 @@
 
  # Jupyterlab-qiime2
 
-
-
 QIIME 2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed.
 Automatically track your analyses with decentralized data provenance — no more guesswork on what commands were run!
 Interactively explore your data with beautiful visualizations that provide new perspectives.
@@ -20,7 +18,7 @@ You can access this app on the cyverse website.
 
 quick launch | tag | size | metrics | build | status |  
 ------------ | --- | ---- | ------- | ------|--------|
-<a href="https://de.cyverse.org/de/?type=quick-launch&quick-launch-id=19f6a94b-71b6-4034-a7a5-40f7bea0b85b&app-id=75773c76-8ee1-11e9-907f-008cfa5ae621" target="_blank"><img src="https://de.cyverse.org/Powered-By-CyVerse-blue.svg"></a> | [![](https://images.microbadger.com/badges/version/cyversevice/Jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/Jupyterlab-qiime2 "2019.7") |  [![](https://images.microbadger.com/badges/image/cyversevice/Jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/Jupyterlab-qiime2 "2019.7") | [![](https://img.shields.io/docker/pulls/cyversevice/Jupyterlab-qiime2.svg)](https://hub.docker.com/r/cyversevice/Jupyterlab-qiime2)  |  [![](https://img.shields.io/docker/cloud/automated/cyversevice/Jupyterlab-qiime2.svg)](https://hub.docker.com/r/cyversevice/Jupyterlab-qiime2/builds) | [![](https://img.shields.io/docker/build/cyversevice/Jupyterlab-qiime2.svg)](https://cloud.docker.com/u/cyversevice/repository/docker/cyversevice/Jupyterlab-qiime2)
+<a href="https://de.cyverse.org/de/?type=quick-launch&quick-launch-id=19f6a94b-71b6-4034-a7a5-40f7bea0b85b&app-id=75773c76-8ee1-11e9-907f-008cfa5ae621" target="_blank"><img src="https://de.cyverse.org/Powered-By-CyVerse-blue.svg"></a> | [![](https://images.microbadger.com/badges/version/cyversevice/jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2 "2019.7") |  [![](https://images.microbadger.com/badges/image/cyversevice/jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2 "2019.7") | [![](https://img.shields.io/docker/pulls/cyversevice/jupyterlab-qiime2.svg)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)  |  [![](https://img.shields.io/docker/cloud/automated/cyversevice/jupyterlab-qiime2.svg)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2/builds) | [![](https://img.shields.io/docker/build/cyversevice/jupyterlab-qiime2.svg)](https://cloud.docker.com/u/cyversevice/repository/docker/cyversevice/jupyterlab-qiime2)
 
 # Instructions
  
@@ -32,18 +30,18 @@ To run the container, you must first pull them from DockerHub, or activate a [Cy
 A Docker container hosted on DockerHub.
 
 ```
-docker pull cyversevice/Jupyterlab-qiime2:2019.7
+docker pull cyversevice/jupyterlab-qiime2:2019.7
 ```
 
 ```
-docker run -it --rm -d cyversevice/Jupyterlab-qiime2:2019.7
+docker run -it --rm -d cyversevice/jupyterlab-qiime2:2019.7
 ```
 
 ## Run Docker container in CyVerse VICE
 
 Unless you plan on making changes to this container, you should just use the existing launch button above.
 
-You can build a new Docker container with additional dependencies from this Docker Hub image by using the `FROM cyversevice/Jupyterlab-qiime2:2019.7` at the beginning of your own Dockerfile.
+You can build a new Docker container with additional dependencies from this Docker Hub image by using the `FROM cyversevice/jupyterlab-qiime2:2019.7` at the beginning of your own Dockerfile.
 
 ###### Developer notes
 
