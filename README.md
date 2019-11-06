@@ -14,7 +14,7 @@ You can access this app on the cyverse website.
 
 
   
-[![DockerHub](https://img.shields.io/badge/DockerHub-brightgreen.svg?style=popout&logo=Docker)](https://hub.docker.com/r/alyssacochran/q2_vice) [![CircleCI](https://circleci.com/gh/cyverse-vice/Jupyterlab-qiime2.svg?style=svg)](https://circleci.com/gh/cyverse-vice/Jupyterlab-qiime2) 
+[![DockerHub](https://img.shields.io/badge/DockerHub-brightgreen.svg?style=popout&logo=Docker)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) [![CircleCI](https://circleci.com/gh/cyverse-vice/jupyterlab-qiime2.svg?style=svg)](https://circleci.com/gh/cyversevice/jupyterlab-qiime2) 
 
 
 
