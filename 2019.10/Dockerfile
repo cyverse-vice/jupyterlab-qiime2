@@ -3,10 +3,11 @@ SHELL ["/bin/bash", "-c"]
 USER root
 
 RUN apt-get update \
-    && apt-get install -y nodejs less vim nano htop libpq-dev lsb wget gnupg apt-transport-https python3.6 python-requests curl \
-    && apt-get clean \
-    && rm -rf /usr/lib/apt/lists/* \
-    && fix-permissions $CONDA_DIR
+    && apt-get install -y nodejs less vim nano htop libpq-dev lsb wget gnupg apt-transport-https python3 python-requests curl 
+
+RUN curl "http://ftp.se.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb" -O && \
+    dpkg -i libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb && \
+    rm libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb
 
 # Install iCommands
 RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add - \
@@ -14,8 +15,10 @@ RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add - 
     && apt-get update \
     && apt-get install -y irods-icommands \
     && apt-get clean \
-    && rm -rf /usr/lib/apt/lists/* \
-    && fix-permissions $CONDA_DIR
+    && rm -rf /usr/lib/apt/lists/* 
+   # && fix-permissions $CONDA_DIR
+
+RUN apt-get install -y gcc
 
 # Install Jupyter lab
 RUN pip install ipython-sql jupyterlab==1.0.9 jupyterlab_sql psycopg2 \
