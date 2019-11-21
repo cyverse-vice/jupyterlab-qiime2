@@ -48,6 +48,9 @@ RUN jupyter labextension install @jupyterlab/github
 COPY jupyter_notebook_config.json /opt/conda/envs/qiime2-2019.10/etc/jupyter/
 RUN jupyter serverextension enable --py qiime2 --sys-prefix
 
+# add Bash kernel
+RUN pip install bash_kernel && python3 -m bash_kernel.install 
+
 # Add the qiime2 user so the container doesn't run as root
 RUN useradd -d /home/qiime2 -u 1000 qiime2
 RUN chown -R qiime2:qiime2 /home/qiime2
