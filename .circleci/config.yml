@@ -4,4 +4,4 @@ jobs:
       - image: cyversevice/jupyterlab-qiime2:2019.10
     steps:
       - checkout
-      - run: cyversevice/jupyterlab-qiime2 2019.10
+      - run: jupyter lab --version
