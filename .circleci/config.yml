@@ -1,7 +1,7 @@
 jobs:
   build1:
     docker:
-      - image: cyversevice/jupyterlab-qiime2:2019.7
+      - image: cyversevice/jupyterlab-qiime2:2019.10
     steps:
       - checkout
-      - run: cyversevice/jupyterlab-qiime2 2019.7
+      - run: cyversevice/jupyterlab-qiime2 2019.10
