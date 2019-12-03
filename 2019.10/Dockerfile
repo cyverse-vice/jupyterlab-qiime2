@@ -3,7 +3,7 @@ SHELL ["/bin/bash", "-c"]
 USER root
 
 RUN apt-get update \
-    && apt-get install -y nodejs less vim nano htop libpq-dev lsb wget gnupg apt-transport-https python3 python-requests curl gcc 
+    && apt-get install -y bash-completion nodejs less vim nano htop libpq-dev lsb wget gnupg apt-transport-https python3 python-requests curl gcc 
 
 RUN curl "http://ftp.se.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb" -O && \
     dpkg -i libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb && \
