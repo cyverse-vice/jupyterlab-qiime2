@@ -15,9 +15,7 @@ You can access this app on the cyverse website.
 
 quick launch | tag | size | metrics | build | status |  
 ------------ | --- | ---- | ------- | ------|--------|
-<a href="https://de.cyverse.org/de/?type=quick-launch&quick-launch-id=a02c1fa2-648b-4cb4-ae40-d5ca5c8cdbb6&app-id=2035c1ce-d031-11e9-a43f-008cfa5ae621" target="_blank"><img src="https://de.cyverse.org/Powered-By-CyVerse-blue.svg"></a> | [![TAG](https://images.microbadger.com/badges/version/cyversevice/jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2) | [![SIZE](https://images.microbadger.com/badges/image/cyversevice/jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white) | [![Docker Pulls](https://img.shields.io/docker/pulls/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)
-[![VICE](https://img.shields.io/badge/CyVerse-VICE-blue.svg?style=popout&logo=Docker&color=#1488C6)]() |[![TAG](https://images.microbadger.com/badges/version/cyversevice/jupyterlab-qiime2:2.0.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2:2.0) | [![SIZE](https://images.microbadger.com/badges/image/cyversevice/jupyterlab-qiime2:2.0.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2:2.0) | [![Docker Pulls](https://img.shields.io/docker/pulls/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)
-
+<a href="https://de.cyverse.org/de/?type=quick-launch&quick-launch-id=a02c1fa2-648b-4cb4-ae40-d5ca5c8cdbb6&app-id=2035c1ce-d031-11e9-a43f-008cfa5ae621" target="_blank"><img src="https://de.cyverse.org/Powered-By-CyVerse-blue.svg"></a> | [![TAG](https://images.microbadger.com/badges/version/cyversevice/jupyterlab-qiime2.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2:2019.10) | [![SIZE](https://images.microbadger.com/badges/image/cyversevice/jupyterlab-qiime2:2019.10.svg)](https://microbadger.com/images/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white) | [![Docker Pulls](https://img.shields.io/docker/pulls/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2) | [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cyversevice/jupyterlab-qiime2?color=blue&logo=docker&logoColor=white)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)
 
 # Instructions
 
@@ -29,18 +27,18 @@ To run the container, you must first pull them from DockerHub, or activate a [Cy
 A Docker container hosted on DockerHub.
 
 ```
-docker pull cyversevice/Jupyterlab-qiime2:2019.7
+docker pull cyversevice/jupyterlab-qiime2:2019.10
 ```
 
 ```
-docker run -it --rm -d cyversevice/Jupyterlab-qiime2:2019.7
+docker run -it --rm -d cyversevice/jupyterlab-qiime2:2019.10
 ```
 
 ## Run Docker container in CyVerse VICE
 
 Unless you plan on making changes to this container, you should just use the existing launch button above.
 
-You can build a new Docker container with additional dependencies from this Docker Hub image by using the `FROM cyversevice/Jupyterlab-qiime2:2019.7` at the beginning of your own Dockerfile.
+You can build a new Docker container with additional dependencies from this Docker Hub image by using the `FROM cyversevice/Jupyterlab-qiime2:2019.10` at the beginning of your own Dockerfile.
 
 ###### Developer notes
 
