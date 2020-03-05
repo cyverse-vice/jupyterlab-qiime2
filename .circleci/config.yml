@@ -1,3 +1,4 @@
+
 jobs:
   build1:
     docker:
@@ -5,8 +6,15 @@ jobs:
     steps:
       - checkout
       - run: jupyter lab --version
+  build2:
+    docker:
+      - image: cyversevice/jupyterlab-qiime2:2019.7
+    steps:
+      - checkout
+      - run: jupyter lab --version
 workflows:
   version: 2
-  build1:
-  jobs:
-    - build1
+  build1_to_build2:
+    jobs:
+      - build1
+      - build2
