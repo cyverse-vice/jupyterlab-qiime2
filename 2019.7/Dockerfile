@@ -3,7 +3,7 @@ SHELL ["/bin/bash", "-c"]
 USER root
 
 RUN apt-get update
-RUN apt-get install -y sudo nodejs
+RUN apt-get install -y sudo nodejs python3 python3-pip
 
 # Install and configure jupyter lab.
 RUN pip install jupyterlab
