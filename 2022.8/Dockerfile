@@ -1,4 +1,4 @@
-FROM quay.io/qiime2/core
+FROM quay.io/qiime2/core:2022.8
 SHELL ["/bin/bash", "-c"]
 USER root
 RUN apt-get update \
@@ -21,11 +21,11 @@ RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add - 
 # && fix-permissions $CONDA_DIR
 
 # Install Jupyter lab
-RUN pip install ipython-sql jupyterlab==1.0.9 jupyterlab_sql psycopg2 
-RUN conda update -n base conda 
-RUN conda install -c conda-forge nodejs=13.10.1
-RUN jupyter serverextension enable jupyterlab_sql --py --sys-prefix 
-RUN jupyter lab build
+RUN pip install ipython-sql jupyterlab==1.0.9 jupyterlab_sql psycopg2 \
+    && conda update -n base conda \
+    && conda install -c conda-forge nodejs=13.10.1 \
+    && jupyter serverextension enable jupyterlab_sql --py --sys-prefix \
+    && jupyter lab build
 
 # install the irods plugin for jupyter lab
 RUN pip install jupyterlab_irods==3.0.2 \
@@ -55,9 +55,9 @@ RUN jupyter serverextension enable --py qiime2 --sys-prefix
 RUN pip install bash_kernel && python3 -m bash_kernel.install 
 
 # Add the qiime2 user so the container doesn't run as root
-RUN useradd -d /home/qiime2 -u 1000 qiime2
-RUN chown -R qiime2:qiime2 /home/qiime2
-
+RUN useradd -d /home/qiime2 -u 1001 qiime2 \
+    && chown -R qiime2:qiime2 /home/qiime2
+ENV SHELL=bash
 # RUN adduser qiime2 sudo
 USER qiime2
 WORKDIR /home/qiime2
@@ -66,5 +66,5 @@ EXPOSE 8888
 
 COPY entry.sh /bin
 RUN mkdir -p /home/qiime2/.irods
-
+CMD ehco $(getent passwd | awk -F: '{ print $1}')
 ENTRYPOINT ["bash", "/bin/entry.sh"]
