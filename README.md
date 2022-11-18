@@ -40,6 +40,8 @@ Unless you plan on making changes to this container, you should just use the exi
 
 You can build a new Docker container with additional dependencies from this Docker Hub image by using the `FROM cyversevice/Jupyterlab-qiime2:2019.10` at the beginning of your own Dockerfile.
 
+**NOTE: access QIIME2 through the conda environment by doing `conda activate qiime2-<version>`**  
+
 ###### Developer notes
 
 To test the container locally:
