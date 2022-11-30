@@ -26,7 +26,18 @@ RUN apt-get update && \
 RUN useradd -d /home/qiime2 -u 1001 qiime2 \
     && chown -R qiime2:qiime2 /home/qiime2
 ENV SHELL=bash
-RUN adduser qiime2 sudo
+
+# Add limited sudo to qiime2 user
+RUN apt update && \
+    apt install -y sudo && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
+    
+ARG LOCAL_USER=qiime2
+ARG PRIV_CMDS='/bin/ch*,/bin/cat,/bin/gunzip,/bin/tar,/bin/mkdir,/bin/ps,/bin/mv,/bin/cp,/usr/bin/apt*,/usr/bin/pip*,/bin/yum'
+
+RUN usermod -aG sudo qiime2 && \
+    echo "$LOCAL_USER ALL=NOPASSWD: $PRIV_CMDS" >> /etc/sudoers
 
 RUN chown -R 1001:1001 /opt/conda
 
@@ -44,6 +55,9 @@ RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/qiime2/.bashrc && \
     echo "conda activate qiime2-2022.8" >> /home/qiime2/.bashrc
 RUN . /opt/conda/etc/profile.d/conda.sh && conda activate qiime2-2022.8 && python3 -m ipykernel install --user --name qiime2-2022.8     
 RUN source /home/qiime2/.bashrc
+
+# add auto-completion with tab for qiime2 CLI
+RUN source tab-qiime
 
 # Install and configure jupyter lab.
 COPY jupyter_notebook_config.json /opt/conda/envs/qiime2-2022.8/etc/jupyter/
