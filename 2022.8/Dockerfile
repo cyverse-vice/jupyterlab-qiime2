@@ -55,4 +55,4 @@ WORKDIR /home/qiime2/
 COPY entry.sh /bin
 RUN mkdir -p /home/qiime2/.irods
 ENTRYPOINT ["tini", "--"]
-CMD ["jupyter", "lab", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--ServerApp.token=''", "--ServerApp.password=''"]
+CMD ["/bin/bash", "/bin/entry.sh"]
