@@ -13,22 +13,30 @@ RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add - 
     && rm -rf /usr/lib/apt/lists/* 
 # && fix-permissions $CONDA_DIR
 
-# Install Jupyter lab
-RUN conda update -n base conda \
-    && conda install -c conda-forge mamba --yes \
-    && mamba install -c conda-forge --yes nodejs jupyterlab psycopg2 ipython-sql \
-    && jupyter lab build
-
-
-# Install and configure jupyter lab.
-COPY jupyter_notebook_config.json /opt/conda/envs/qiime2-2022.8/etc/jupyter/
-#RUN jupyter serverextension enable --py qiime2 --sys-prefix
+# Install tini
+RUN apt-get update && \
+    apt-get install -y curl grep sed dpkg && \
+    curl -L "https://github.com/krallin/tini/releases/download/v0.19.0/tini_0.19.0-amd64.deb" > tini.deb && \
+    dpkg -i tini.deb && \
+    rm tini.deb && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*  
 
 # Add the qiime2 user so the container doesn't run as root
 RUN useradd -d /home/qiime2 -u 1001 qiime2 \
     && chown -R qiime2:qiime2 /home/qiime2
 ENV SHELL=bash
-# RUN adduser qiime2 sudo
+RUN adduser qiime2 sudo
+
+RUN chown -R 1001:1001 /opt/conda
+
+USER qiime2
+
+# Install Jupyter lab
+RUN conda update -n base conda \
+    && conda install -c conda-forge mamba --yes \
+    && mamba install -c conda-forge --yes nodejs jupyterlab ipykernel \
+    && jupyter lab build
 
 # make sure QIIME2 Conda Kernel is installed and starts 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/qiime2/.bashrc && \
@@ -37,12 +45,14 @@ RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/qiime2/.bashrc && \
 RUN . /opt/conda/etc/profile.d/conda.sh && conda activate qiime2-2022.8 && python3 -m ipykernel install --user --name qiime2-2022.8     
 RUN source /home/qiime2/.bashrc
 
-USER qiime2
-WORKDIR /home/qiime2
+# Install and configure jupyter lab.
+COPY jupyter_notebook_config.json /opt/conda/envs/qiime2-2022.8/etc/jupyter/
 
 EXPOSE 8888
 
+WORKDIR /home/qiime2/
+
 COPY entry.sh /bin
 RUN mkdir -p /home/qiime2/.irods
-CMD echo $(getent passwd | awk -F: '{ print $1}')
-ENTRYPOINT ["bash", "/bin/entry.sh"]
+ENTRYPOINT ["tini", "--"]
+CMD ["jupyter", "lab", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--ServerApp.token=''", "--ServerApp.password=''"]

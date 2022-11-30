@@ -10,7 +10,7 @@ Plugin-based system — your favorite microbiome methods all in one place.
 There are multiple versions of this app with the latest version being 2019.7.
 You can access this app on the cyverse website. 
 
-[![CircleCI](https://circleci.com/gh/cyverse-vice/jupyterlab-qiime2.svg?style=svg)](https://circleci.com/gh/cyversevice/jupyterlab-qiime2) [![DockerHub](https://img.shields.io/badge/DockerHub-brightgreen.svg?style=popout&logo=Docker)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)
+[![DockerHub](https://img.shields.io/badge/DockerHub-brightgreen.svg?style=popout&logo=Docker)](https://hub.docker.com/r/cyversevice/jupyterlab-qiime2)
 
 
 quick launch | tag | size | metrics | build | 
