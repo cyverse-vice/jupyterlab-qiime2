@@ -50,11 +50,11 @@ RUN conda update -n base conda \
     && jupyter lab build
 
 # make sure QIIME2 Conda Kernel is installed and starts 
-RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/qiime2/.bashrc && \
-    echo "conda deactivate" >> /home/qiime2/.bashrc && \
-    echo "conda activate qiime2-2022.8" >> /home/qiime2/.bashrc
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/qiime2/.bash_profile && \
+    echo "conda deactivate" >> /home/qiime2/.bash_profile && \
+    echo "conda activate qiime2-2022.8" >> /home/qiime2/.bash_profile
 RUN . /opt/conda/etc/profile.d/conda.sh && conda activate qiime2-2022.8 && python3 -m ipykernel install --user --name qiime2-2022.8     
-RUN source /home/qiime2/.bashrc
+RUN source /home/qiime2/.bash_profile
 
 # add auto-completion with tab for qiime2 CLI
 RUN source tab-qiime
