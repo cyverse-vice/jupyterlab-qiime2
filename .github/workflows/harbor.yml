@@ -38,11 +38,11 @@ jobs:
         id: docker_build_one_six_eight_zero
         uses: docker/build-push-action@v2.6.1
         with:
-          context: 2022.8
-          file: 2022.8/Dockerfile
+          context: 2023.2
+          file: 2023.2/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: harbor.cyverse.org/vice/jupyter/qiime2:2022.8
+          tags: harbor.cyverse.org/vice/jupyter/qiime2:2023.2
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 

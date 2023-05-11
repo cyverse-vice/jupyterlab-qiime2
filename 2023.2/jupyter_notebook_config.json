@@ -1,0 +1,7 @@
+{
+  "ServerApp": {
+    "allow_origin" : "*",
+  	"token":"",
+  	"password":""
+  }
+}
